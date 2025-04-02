@@ -9,7 +9,107 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      chat_messages: {
+        Row: {
+          content: string
+          created_at: string | null
+          id: string
+          role: string
+          sentiment_score: number | null
+          session_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string | null
+          id?: string
+          role: string
+          sentiment_score?: number | null
+          session_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string | null
+          id?: string
+          role?: string
+          sentiment_score?: number | null
+          session_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "chat_messages_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "chat_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      chat_sessions: {
+        Row: {
+          created_at: string | null
+          id: string
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      mood_tracking: {
+        Row: {
+          created_at: string | null
+          id: string
+          mood_score: number
+          notes: string | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          mood_score: number
+          notes?: string | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          mood_score?: number
+          notes?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string | null
+          id: string
+          updated_at: string | null
+          username: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id: string
+          updated_at?: string | null
+          username?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          updated_at?: string | null
+          username?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
