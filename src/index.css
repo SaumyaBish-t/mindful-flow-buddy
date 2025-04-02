@@ -38,6 +38,10 @@
     --radius: 1rem;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
@@ -104,6 +108,37 @@
     50% {
       transform: scale(1.2);
       opacity: 1;
+    }
+  }
+  
+  /* Added animations for hover effects */
+  .hover-scale {
+    @apply transition-transform duration-300;
+  }
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+  .hover-lift:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Smooth animations for elements */
+  .fade-in {
+    animation: fadeIn 0.7s ease-in forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 }

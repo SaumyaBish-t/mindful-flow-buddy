@@ -3,6 +3,7 @@ import React from 'react';
 import Landing from '../components/Landing';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import ScrollToTop from '../components/ScrollToTop';
 
 const Index: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const Index: React.FC = () => {
         <Landing />
       </main>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 };
