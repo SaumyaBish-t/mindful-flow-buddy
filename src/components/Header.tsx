@@ -2,10 +2,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useUser } from '../contexts/UserContext';
+import { useAuth } from '../contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 
 const Header: React.FC = () => {
-  const { user, logout } = useUser();
+  const { user: localUser, logout: localLogout } = useUser();
+  const { user: authUser, signOut: authSignOut } = useAuth();
+  
+  // Use authUser if available (Supabase), otherwise fall back to localUser (context)
+  const user = authUser || localUser;
+  
+  // Handle logout based on which auth system is being used
+  const handleLogout = async () => {
+    if (authUser) {
+      await authSignOut();
+    } else if (localUser) {
+      localLogout();
+    }
+  };
 
   return (
     <header className="bg-white shadow-sm py-4">
@@ -29,11 +43,13 @@ const Header: React.FC = () => {
                 Chat
               </Link>
               <div className="flex items-center space-x-2">
-                <span className="text-sm text-gray-600">Hi, {user.name}</span>
+                <span className="text-sm text-gray-600">
+                  Hi, {authUser?.email || localUser?.name || 'User'}
+                </span>
                 <Button 
                   variant="ghost" 
                   size="sm" 
-                  onClick={logout}
+                  onClick={handleLogout}
                   className="text-gray-600 hover:text-therapeutic-blue"
                 >
                   Logout
