@@ -2,6 +2,7 @@
 import React from 'react';
 import { MessageSquare, BarChart2, BookOpen } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
+import workflowIcon from '../../public/workflow-icon.svg';
 
 const HowItWorks: React.FC = () => {
   const steps = [
@@ -34,7 +35,7 @@ const HowItWorks: React.FC = () => {
             <AnimatedSection key={index} delay={200 + (index * 150)} direction={index % 2 === 0 ? "up" : "down"}>
               <div className="flex flex-col items-center text-center">
                 <div className="p-4 bg-white/10 rounded-full mb-6">
-                  <step.icon size={32} />
+                  <img src={workflowIcon} alt="Workflow Icon" className="w-8 h-8" />
                 </div>
                 <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
                 <p className="text-white/80">{step.description}</p>

@@ -3,6 +3,7 @@ import React from 'react';
 import { CheckCircle } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
 import { Card, CardContent } from '@/components/ui/card';
+import featureIcon from '../../public/feature-icon.svg';
 
 const FeatureHighlights: React.FC = () => {
   const features = [
@@ -37,7 +38,7 @@ const FeatureHighlights: React.FC = () => {
               <Card className="border-therapeutic-lightBlue/30 hover:shadow-lg transition-all duration-300 h-full">
                 <CardContent className="p-6 flex flex-col h-full">
                   <div className="flex items-center mb-4 text-therapeutic-blue">
-                    <CheckCircle className="mr-3" />
+                    <img src={featureIcon} alt="Feature Icon" className="w-6 h-6 mr-3" />
                     <h3 className="text-xl font-semibold">{feature.title}</h3>
                   </div>
                   <p className="text-gray-600">{feature.description}</p>

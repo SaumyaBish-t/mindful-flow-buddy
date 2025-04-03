@@ -9,6 +9,7 @@ import HowItWorks from './HowItWorks';
 import Testimonials from './Testimonials';
 import FAQ from './FAQ';
 import CTASection from './CTASection';
+import mindfulFlowImage from '../../public/mindful-flow.svg';
 
 const Landing: React.FC = () => {
   const { user } = useAuth();
@@ -19,6 +20,7 @@ const Landing: React.FC = () => {
       <div className="min-h-[80vh] flex flex-col items-center justify-center bg-gradient-to-b from-therapeutic-lightBlue/30 to-white py-20 px-4">
         <div className="max-w-3xl mx-auto text-center">
           <AnimatedSection direction="up" delay={100}>
+            <img src={mindfulFlowImage} alt="MindfulFlow Logo" className="w-32 h-32 mx-auto mb-6" />
             <h1 className="text-5xl font-bold mb-6 text-therapeutic-blue">Welcome to MindfulFlow</h1>
           </AnimatedSection>
           
